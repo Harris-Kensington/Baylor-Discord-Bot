@@ -1,8 +1,8 @@
 import discord
 import asyncio
 
-description = "Baylor-Bot"
-bot_prefix = "!"
+description = "Percy-Bot"
+bot_prefix = "+"
 
 client = discord.Client()
 
@@ -15,7 +15,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	if message.content.startswith('!help'):
+	if message.content.startswith('+help'):
 		await client.send_message(message.channel, "HELP")
 
-client.run("Mzk0NjY3NjMyMzk1MDI2NDQz.DSHrWQ.YkIOkrzE3G-C7eTAUoOYbPAS8hw");
+client.run(process.env.TOKEN);
