@@ -1,21 +1,50 @@
 import discord
+from discord.ext.commands import Bot
+from discord.ext import commands
 import asyncio
+import time
 
-description = "Percy-Bot"
-bot_prefix = "+"
 
-client = discord.Client()
+Client = discord.Client()  
+client = commands.Bot(command_prefix = "?") 
 
-@client.event
+
+@client.event 
 async def on_ready():
-	print("Logged in");
-	print("Name: " + client.user.name);
-	print("ID: " + client.user.id);
-	print("\n\n");
+    print("Bot is online and connected to Discord") 
 
 @client.event
 async def on_message(message):
-	if message.content.startswith('+help'):
-		await client.send_message(message.channel, "HELP")
+    if message.content == "?cookie":
+        await client.send_message(message.channel, ":cookie:")
 
-client.run("Mzk3Njk0NjM0NzA2NDY4ODY0.DS1hmQ.zhDS0K2WtQGiehcQduk-yBUO-1g");
+@client.event
+async def on_message(message):
+    if message.content.startswith('?progress'):
+        embed = discord.Embed(title="PROGRESS", description="This bot is 0.37% complete", color=0x00ff00)
+        await client.send_message(message.channel, embed=embed)
+
+
+@client.event
+async def on_message(message):
+    if message.content.startswith('?greet'):
+        await client.send_message(message.channel, 'Say hello')
+        msg = await client.wait_for_message(author=message.author, content='hello')
+        await client.send_message(message.channel, 'Hello.')
+
+
+@client.event
+async def on_ready():
+    await client.change_presence(game=discord.Game(name='WIP | Prefix - ?'))
+
+
+
+    
+        
+
+
+        
+
+        
+    
+client.run("Mzk3Njk0NjM0NzA2NDY4ODY0.DSz_wQ.wSd8D6TkHv8WLrq4c4SmzYBMZ9Q")
