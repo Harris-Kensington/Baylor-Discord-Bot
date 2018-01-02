@@ -18,4 +18,4 @@ async def on_message(message):
 	if message.content.startswith('+help'):
 		await client.send_message(message.channel, "HELP")
 
-client.run(process.env.TOKEN);
+client.run("Mzk3Njk0NjM0NzA2NDY4ODY0.DS1hmQ.zhDS0K2WtQGiehcQduk-yBUO-1g");
